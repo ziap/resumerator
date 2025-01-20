@@ -1,0 +1,160 @@
+title = "Bùi Huy Giáp"
+
+# ---------------------------------- Contact ----------------------------------
+
+[contact]
+location = "HCMC, Vietnam"
+email    = "giapbuihuy05@gmail.com"
+website  = "ziap.github.io"
+
+[[contact.socials]]
+site    = "linkedin"
+profile = "linkedin.com/in/ziap"
+
+[[contact.socials]]
+site    = "github"
+profile = "github.com/ziap"
+
+# --------------------------------- Education ---------------------------------
+
+[[education]]
+institution = "VNU-HCM University of Science, HCMC, Vietnam"
+program     = "High-quality program, Faculty of Information Technology"
+duration    = "2023 - 2027"
+
+[[education]]
+institution = "VNU-HCM High School for the Gifted, HCMC, Vietnam"
+program     = "Honors Class, Computer Science"
+duration    = "2020 - 2023"
+
+# ---------------------------------- Skills -----------------------------------
+
+[[skills]]
+subset = "Programming languages"
+skills = [ "C", "C++", "JavaScript", "TypeScript", "Python", "Rust" ]
+
+[[skills]]
+subset = "Markup languages"
+skills = [ "HTML/CSS", "Markdown", "LaTeX" ]
+
+[[skills]]
+subset = "Frameworks"
+skills = [ "PyTorch", "React", "Svelte", "FastAPI", "Django", "Ruby on Rails" ]
+
+[[skills]]
+subset = "Tools"
+skills = [ "Linux", "Git", "GitHub", "VSCode", "(Neo)vim", "NixOS" ]
+
+[[skills]]
+subset = "Languages"
+skills = [ "English (fluent, 8.0 IELTS)", "Vietnamese (native speaker)" ]
+
+# -------------------------------- Experiences --------------------------------
+
+[[experiences]]
+organization = "Robotics & IoT Club HCMUS"
+duration     = "Jun 2022 - Sep 2022"
+position     = "Research intern"
+descriptions = [
+  """
+  Worked in a 3-month internship program researching about Natural Language
+  Processing with a team of 6 interns.
+  """,
+
+  """
+  Planned for the development of a full-stack web application for reading stories
+  with AI text-to-speech technology, distributed the workload, and supervised the
+  team’s progress. 
+  """,
+]
+
+[[experiences]]
+organization = "The Gifted Battlefield"
+duration     = "Jan 2021 - May 2023"
+position     = "Software engineer, DevOps"
+descriptions = [
+  """
+  Deployed and maintained multiple web applications and made improvements when
+  requirements changed.
+  """,
+
+  """
+  Collaborated in a student organization department and helped new members get up
+  to speed.
+  """,
+]
+
+# ---------------------------------- Awards -----------------------------------
+
+[[awards]]
+event = "HCMUS CTF 2024"
+prize = "First place"
+time  = "Dec 2024"
+
+[[awards]]
+event = "Thach Thuc 2024 academic competition"
+prize = "Second place"
+time  = "Apr 2024"
+
+[[awards]]
+event = "HCMC AI Challenge 2023, high school division"
+prize = "First place"
+time  = "Sep 2023"
+
+# ------------------------------- Publications --------------------------------
+
+[[publications]]
+title     = """
+Zero-shot Video Retrieval using CLIP with Temporally Ordered Multi-query
+Scoring
+"""
+published = "SoICT 2023"
+link      = "https://dl.acm.org/doi/10.1145/3628797.3628984"
+
+[[publications]]
+title     = """
+A cross-domain and subject-centric approach towards the memorability prediction
+task
+"""
+published = "MediaEval 2023 Workshop"
+link      = "https://2023.multimediaeval.com/paper28.pdf"
+
+# --------------------------------- Projects ----------------------------------
+
+[[projects]]
+name          = "2048 TDL"
+time          = "May 2022"
+topics        = [ "Machine Learning", "System Programming" ]
+descriptions = [
+  """
+  Trained a powerful C++ 2048 AI with a variant of temporal difference learning
+  algorithms.
+  """,
+
+  """
+  Applied many performance optimization techniques, such as multi-threading,
+  compiler intrinsics, bit manipulation, and template meta-programming, for
+  faster training and inference.
+  """,
+]
+
+[[projects]]
+name         = "Repalette"
+time         = "Jan 2023"
+topics       = [ "Web Development", "Image Processing" ]
+descriptions = [
+  """
+  Built a web application and command-line interface for changing images' color
+  palette to a specific theme.
+  """,
+
+  """
+  Utilized the browser’s native image rendering capability and a WebAssembly
+  module written in C for highly efficient.
+  """,
+
+  """
+  Open-sourced the project that garnered significant user engagement and received
+  numerous stars on GitHub.
+  """,
+]

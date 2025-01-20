@@ -1,0 +1,170 @@
+:root {
+  --font-size: 3mm;
+  --gap: 1.18mm;
+  --padding: 5mm;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Lato";
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  color: #363a3e;
+}
+
+ul {
+  padding-left: 1em;
+  margin: 0;
+  list-style: none;
+
+  &>li {
+    position: relative;
+
+    &::before {
+      content: "";
+      border-color: transparent #1aa8f4;
+      border-style: solid;
+      border-width: 0.35em 0 0.35em 0.45em;
+      display: block;
+      position: absolute;
+      height: 0;
+      width: 0;
+      left: -0.725em;
+      top: 0.35em;
+    }
+  }
+}
+
+.container {
+  height: 100%;
+  font-size: var(--font-size);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .container {
+    position: fixed;
+    inset: 0;
+  }
+}
+
+@media not print {
+  body {
+    background: #a3d2f4;
+  }
+
+  .container {
+    max-width: 210mm;
+    max-height: 297mm;
+    margin: 64px auto;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  }
+}
+
+.resume__header {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #033451;
+  color: #fff;
+}
+
+.resume__body {
+  flex: 1;
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: var(--padding);
+}
+
+.title {
+  font-family: "Merriweather";
+  font-weight: 900;
+  color: #f8fafc;
+  font-size: 7.5mm;
+  margin: 2mm 0 6mm 0;
+}
+
+.subtitle {
+  font-family: "Merriweather";
+  font-size: 4.5mm;
+  font-weight: 800;
+  margin: 0 0 var(--font-size) 0;
+  border-bottom: solid #033451 0.53mm;
+  color: #033451;
+}
+
+.contact {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--padding);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact__item {
+  color: #f8fafc;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+
+  & > a {
+    color: inherit;
+  }
+
+  & > svg {
+    fill: #f8fafc;
+    height: 1em;
+    overflow: visible;
+  }
+}
+
+.split {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.time {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.link {
+  text-decoration: underline 0.44mm #1aa8f4;
+}
+
+.entry__container {
+  margin-top: var(--font-size);
+}
+
+.entry__item {
+  margin-top: var(--gap);
+  text-align: justify;
+}
+
+.entry__name {
+  font-weight: 700;
+}
+
+.resume__footer {
+  display: block;
+  height: 20mm;
+  width: 100%;
+}

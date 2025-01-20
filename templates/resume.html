@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resume.title }}</title>
+
+    <style>
+      {% include "../vendor/fonts.css" %}
+      {% include "styles.css" %}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="resume__header">
+        <h1 class="title">{{ resume.title }}</h1>
+
+        <div class="contact">
+          {% let contact = resume.contact %}
+          <div class="contact__item">
+            {% include "icons/location.svg" %}
+            {{ contact.location }}
+          </div>
+          <div class="contact__item">
+            {% include "icons/mail.svg" %}
+            <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+          </div>
+          <div class="contact__item">
+            {% include "icons/web.svg" %}
+            <a href="https://{{ contact.website }}">{{ contact.website }}</a>
+          </div>
+          {% for social in contact.socials %}
+            <div class="contact__item">
+              {% match &*social.site %}
+                {% when "github" %}
+                  {% include "icons/social/github.svg" %}
+                {% when "linkedin" %}
+                  {% include "icons/social/linkedin.svg" %}
+                {% when "twitter" %}
+                  {% include "icons/social/twitter.svg" %}
+                {% when "facebook" %}
+                  {% include "icons/social/facebook.svg" %}
+                {% when _ %}
+              {% endmatch %}
+              <a href="https://{{ social.profile }}">{{ social.profile }}</a> 
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <div class="resume__body">
+        <section>
+          <h2 class="subtitle">Education</h2>
+          {% for education in resume.education %}
+            <div class="entry__container split">
+              <div>
+                <span class="entry__name">
+                  {{ education.institution }}
+                </span>
+                <br>
+                <span>
+                  {{ education.program }}
+                </span>
+              </div>
+              <div class="time">
+                {{ education.duration }}
+              </div>
+            </div>
+          {% endfor %}
+        </section>
+
+        <section>
+          <h2 class="subtitle">Skills</h2>
+          <ul>
+            {% for skillset in resume.skills %}
+              {% let skills = *skillset.skills %}
+              {% if let [rest @ .., last] = skills %}
+                <li class="entry__item">
+                  {{ skillset.subset }}:
+                  {% for skill in rest %}
+                    {{ skill }},
+                  {% endfor %}
+                  {{ last }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="subtitle">Experiences</h2>
+
+          {% for experience in resume.experiences %}
+            <div class="entry__container">
+              <div class="split">
+                <div>
+                  <span class="entry__name">
+                    {{ experience.organization }} 
+                  </span>
+                  |
+                  <span class="experience__position">
+                    {{ experience.position }}
+                  </span>
+                </div>
+                <div class="time">
+                  {{ experience.duration }}
+                </div>
+              </div>
+
+              <ul class="experience__descriptions">
+                {% for description in experience.descriptions %}
+                  <li class="entry__item">{{ description }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </section>
+
+        <section>
+          <h2 class="subtitle">Awards</h2>
+
+          {% for award in resume.awards %}
+            <div class="entry__item split">
+              <div>
+                <span class="entry__name">{{ award.prize }}</span>
+                {% if let Some(event) = award.event %}
+                   | <span class="award__event">{{ event }}</span>
+                {% endif %}
+              </div>
+              <div class="time">{{ award.time }}</div>
+            </div>      
+          {% endfor %}
+        </section>
+
+        <section>
+          <h2 class="subtitle">Publications</h2>
+          
+          <ul>
+            {% for publication in resume.publications %}
+              <li class="entry__item">
+                <q>{{ publication.title.trim() }}</q>, {{ publication.published }}
+                (<a href="{{ publication.link }}">link</a>)
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="subtitle">Projects</h2>
+          
+          {% for project in resume.projects %}
+            <div class="entry__container">
+              <div class="split">
+                <div>
+                  <span class="entry__name">
+                    {{ project.name }}
+                  </span>
+
+                  <span class="project__topics">
+                    {% if let [rest @ .., last] = *project.topics %}
+                      |
+                      {% for topic in rest %}
+                        {{ topic }},
+                      {% endfor %}
+                      {{ last }}
+                    {% endif %}
+                  </span>
+                </div>
+
+                <div class="time">
+                  {{ project.time }}
+                </div>
+              </div>
+
+              <ul class="project__descriptions">
+                {% for description in project.descriptions %}
+                  <li class="entry__item">{{ description }}</li>
+                {% endfor %}
+              </ul>
+            </div> 
+          {% endfor %}
+        </section>
+
+      </div>
+
+      <footer>
+        <svg class="resume__footer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 352.5 960 188.5" preserveAspectRatio="none">
+          <path d="M0 441L22.8 424.5C45.7 408 91.3 375 137 360.8C182.7 346.7 228.3 351.3 274 369.3C319.7 387.3 365.3 418.7 411.2 414.2C457 409.7 503 369.3 548.8 368C594.7 366.7 640.3 404.3 686 421.7C731.7 439 777.3 436 823 429.8C868.7 423.7 914.3 414.3 937.2 409.7L960 405L960 541L937.2 541C914.3 541 868.7 541 823 541C777.3 541 731.7 541 686 541C640.3 541 594.7 541 548.8 541C503 541 457 541 411.2 541C365.3 541 319.7 541 274 541C228.3 541 182.7 541 137 541C91.3 541 45.7 541 22.8 541L0 541Z" fill="#f7f9fb"/>
+          <path d="M0 477L22.8 467C45.7 457 91.3 437 137 423.8C182.7 410.7 228.3 404.3 274 401.7C319.7 399 365.3 400 411.2 413.5C457 427 503 453 548.8 464.2C594.7 475.3 640.3 471.7 686 456.5C731.7 441.3 777.3 414.7 823 404.5C868.7 394.3 914.3 400.7 937.2 403.8L960 407L960 541L937.2 541C914.3 541 868.7 541 823 541C777.3 541 731.7 541 686 541C640.3 541 594.7 541 548.8 541C503 541 457 541 411.2 541C365.3 541 319.7 541 274 541C228.3 541 182.7 541 137 541C91.3 541 45.7 541 22.8 541L0 541Z" fill="#eff3f7"/>
+          <path d="M0 459L22.8 456.2C45.7 453.3 91.3 447.7 137 456.7C182.7 465.7 228.3 489.3 274 494.8C319.7 500.3 365.3 487.7 411.2 476C457 464.3 503 453.7 548.8 451.7C594.7 449.7 640.3 456.3 686 462.5C731.7 468.7 777.3 474.3 823 473.2C868.7 472 914.3 464 937.2 460L960 456L960 541L937.2 541C914.3 541 868.7 541 823 541C777.3 541 731.7 541 686 541C640.3 541 594.7 541 548.8 541C503 541 457 541 411.2 541C365.3 541 319.7 541 274 541C228.3 541 182.7 541 137 541C91.3 541 45.7 541 22.8 541L0 541Z" fill="#e8eef4" stroke="#e8eef4"/>
+        </svg>
+      </footer>
+    </div>
+  </body>
+</html>

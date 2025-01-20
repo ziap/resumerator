@@ -1,0 +1,9 @@
+[package]
+name = "resumerator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+toml = { version = "0.8.19", default-features = false, features = ["parse"]}
+serde = { version = "1.0.217", default-features = false, features = ["alloc", "derive"] }
+rinja = "0.3.5"
