@@ -1,3 +1,5 @@
+use std::{error, fmt::Display, process};
+
 use serde::Deserialize;
 use rinja::Template;
 
@@ -76,18 +78,18 @@ struct ResumeTemplate {
   resume: Resume, 
 }
 
-const fn handle_error<T, E>(msg: impl std::fmt::Display) -> impl FnOnce(E) -> T
-where E: std::error::Error {
+const fn handle_error<T, E>(msg: impl Display) -> impl FnOnce(E) -> T
+where E: error::Error {
   return move |err: E| {
     eprintln!("ERROR: {msg}: {err}");
-    std::process::exit(1);
+    process::exit(1);
   }
 }
 
-const fn handle_none<T>(msg: impl std::fmt::Display) -> impl FnOnce() -> T {
+const fn handle_none<T>(msg: impl Display) -> impl FnOnce() -> T {
   return move || {
     eprintln!("ERROR: {msg}");
-    std::process::exit(1);
+    process::exit(1);
   }
 }
 
