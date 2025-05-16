@@ -87,19 +87,41 @@ descriptions = [
 # ---------------------------------- Awards -----------------------------------
 
 [[awards]]
-event = "HCMUS CTF 2024"
-prize = "First place"
-time  = "Dec 2024"
+event        = "Thach Thuc 2025 academic competition"
+prize        = "First place winner"
+time         = "Apr 2025"
+descriptions = [
+  """
+  Secured first place in a faculty-level academic competition, demonstrating
+  extensive knowledge across various fields of computer science.
+  """,
+
+  """
+  Leveraged strong communication and teamwork abilities to coordinate efforts,
+  ensuring efficient problem-solving and timely completion of challenges.
+  """,
+]
 
 [[awards]]
-event = "Thach Thuc 2024 academic competition"
-prize = "Second place"
-time  = "Apr 2024"
+event        = "HCMUS CTF 2024"
+prize        = "First place winner"
+time         = "Dec 2024"
+descriptions = [
+  """
+  Achieved first place in a highly competitive university-level Capture The
+  Flag (CTF) cybersecurity competition.
+  """,
 
-[[awards]]
-event = "HCMC AI Challenge 2023, high school division"
-prize = "First place"
-time  = "Sep 2023"
+  """
+  Collaborated with a team of 4 members to tackle a series of complex
+  challenges across various domains.
+  """,
+
+  """
+  Showcased expertise in reverse engineering, web exploitation, and AI
+  poisoning.
+  """,
+]
 
 # ------------------------------- Publications --------------------------------
 
@@ -150,7 +172,7 @@ descriptions = [
 
   """
   Utilized the browser’s native image rendering capability and a WebAssembly
-  module written in C for highly efficient.
+  module written in C for high performance.
   """,
 
   """

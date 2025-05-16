@@ -27,11 +27,9 @@
       ccPkgs = builtins.mapAttrs (name: value: value.stdenv.cc) pkgsCross;
       cc = builtins.mapAttrs (name: value: "${value}/bin/${targetName.${name}}-cc") ccPkgs;
 
-      wine = pkgs.wineWowPackages.stable;
     in pkgs.mkShell {
       buildInputs = [
         pkgs.rustup
-        wine
         pkgs.chromium
       ] ++ builtins.attrValues ccPkgs;
 
@@ -48,14 +46,10 @@
       CC_x86_64_unknown_linux_musl = cc.musl;
       CC_x86_64_pc_windows_gnu = cc.mingw;
 
-      # Use wine for `cargo run`, `cargo test`, etc.
-      CARGO_TARGET_X86_64_PC_WINDOWS_GNU_RUNNER = "${wine}/bin/wine64";
-
       shellHook = ''
         # Avoid polluting home directory
         export RUSTUP_HOME=$(pwd)/.rustup/
         export CARGO_HOME=$(pwd)/.cargo/
-        export WINEPREFIX=$(pwd)/.wine/
 
         # Use binaries installed with `cargo install`
         export PATH=$PATH:$CARGO_HOME/bin

@@ -107,7 +107,7 @@
                 </div>
               </div>
 
-              <ul class="experience__descriptions">
+              <ul>
                 {% for description in experience.descriptions %}
                   <li class="entry__item">{{ description }}</li>
                 {% endfor %}
@@ -120,15 +120,23 @@
           <h2 class="subtitle">Awards</h2>
 
           {% for award in resume.awards %}
-            <div class="entry__item split">
-              <div>
-                <span class="entry__name">{{ award.prize }}</span>
-                {% if let Some(event) = award.event %}
-                   | <span class="award__event">{{ event }}</span>
-                {% endif %}
+            <div class="entry__container">
+              <div class="split">
+                <div>
+                  <span class="entry__name">{{ award.prize }}</span>
+                  {% if let Some(event) = award.event %}
+                     | <span class="award__event">{{ event }}</span>
+                  {% endif %}
+                </div>
+                <div class="time">{{ award.time }}</div>
               </div>
-              <div class="time">{{ award.time }}</div>
-            </div>      
+
+              <ul>
+                {% for description in award.descriptions %}
+                  <li class="entry__item">{{ description }}</li>
+                {% endfor %}
+              </ul>
+            </div>
           {% endfor %}
         </section>
 
@@ -172,7 +180,7 @@
                 </div>
               </div>
 
-              <ul class="project__descriptions">
+              <ul>
                 {% for description in project.descriptions %}
                   <li class="entry__item">{{ description }}</li>
                 {% endfor %}

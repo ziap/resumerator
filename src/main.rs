@@ -43,6 +43,7 @@ struct Award {
   event: Option<Box<str>>,
   prize: Box<str>,
   time: Box<str>,
+  descriptions: Box<[Box<str>]>,
 }
 
 #[derive(Deserialize)]
