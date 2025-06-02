@@ -1,5 +1,5 @@
 {
-  description = "Resumerator's Rust environment";
+  description = "Resumerator's Rust development shell";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
@@ -9,7 +9,10 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
   in {
+    # Only create a development shell, because packaging is handled by
+    # static-linking via musl
     devShell.${system} = let
+      # Also cross-compile to Windows, because why not
       targetName = {
         mingw = "x86_64-w64-mingw32";
         musl = "x86_64-unknown-linux-musl";

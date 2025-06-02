@@ -6,7 +6,7 @@ structured data in TOML format.
 ## Why?
 
 This project was created because I want to quickly adjust my resumes when there
-are updates or when I want to apply to a different position. I also want to
+are updates or when I want to apply to different positions. I also want to
 store my resumes in a human-readable, plain-text format for various reasons
 such as version control and ease of editing.
 

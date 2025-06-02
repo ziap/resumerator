@@ -79,7 +79,7 @@ struct ResumeTemplate {
   resume: Resume, 
 }
 
-const fn handle_error<T, E>(msg: impl Display) -> impl FnOnce(E) -> T
+const fn fail_error<T, E>(msg: impl Display) -> impl FnOnce(E) -> T
 where E: error::Error {
   return move |err: E| {
     eprintln!("ERROR: {msg}: {err}");
@@ -87,7 +87,7 @@ where E: error::Error {
   }
 }
 
-const fn handle_none<T>(msg: impl Display) -> impl FnOnce() -> T {
+const fn fail_none<T>(msg: impl Display) -> impl FnOnce() -> T {
   return move || {
     eprintln!("ERROR: {msg}");
     process::exit(1);
@@ -102,13 +102,13 @@ fn main() {
   args.next().expect("Failed to get program name");
 
   let input_file = args.next()
-    .unwrap_or_else(handle_none("No input provided"));
+    .unwrap_or_else(fail_none("No input provided"));
 
   let resume_str = fs::read_to_string(&input_file)
-    .unwrap_or_else(handle_error(format!("Failed to read `{input_file}`")));
+    .unwrap_or_else(fail_error(format!("Failed to read `{input_file}`")));
 
   let resume: Resume = toml::de::from_str(&resume_str)
-    .unwrap_or_else(handle_error("Failed to parse resume"));
+    .unwrap_or_else(fail_error("Failed to parse resume"));
 
   let template = ResumeTemplate { resume };
 
@@ -118,14 +118,14 @@ fn main() {
       let mut stdout = io::stdout();
 
       template.write_into(&mut stdout)
-        .unwrap_or_else(handle_error("Failed to write resume to stdout"));
+        .unwrap_or_else(fail_error("Failed to write resume to stdout"));
     },
     Some(output_path) => {
       let mut file = fs::File::create(&output_path)
-        .unwrap_or_else(handle_error(format!("Failed to open `{output_path}`")));
+        .unwrap_or_else(fail_error(format!("Failed to open `{output_path}`")));
 
       template.write_into(&mut file)
-        .unwrap_or_else(handle_error(format!("Failed to write resume to `{output_path}`")));
+        .unwrap_or_else(fail_error(format!("Failed to write resume to `{output_path}`")));
     },
   };
 }
