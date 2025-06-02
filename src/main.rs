@@ -67,10 +67,10 @@ struct Resume {
   contact: Contact,
   education: Box<[Education]>,
   skills: Box<[SkillSet]>,
-  experiences: Box<[Experience]>,
-  awards: Box<[Award]>,
-  publications: Box<[Publication]>,
-  projects: Box<[Project]>,
+  experiences: Option<Box<[Experience]>>,
+  awards: Option<Box<[Award]>>,
+  publications: Option<Box<[Publication]>>,
+  projects: Option<Box<[Project]>>,
 }
 
 #[derive(Template)]

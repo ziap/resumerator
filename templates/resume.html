@@ -87,107 +87,115 @@
           </ul>
         </section>
 
-        <section>
-          <h2 class="subtitle">Experiences</h2>
+        {% if let Some(experiences) = resume.experiences %}
+          <section>
+            <h2 class="subtitle">Experiences</h2>
 
-          {% for experience in resume.experiences %}
-            <div class="entry__container">
-              <div class="split">
-                <div>
-                  <span class="entry__name">
-                    {{ experience.organization }} 
-                  </span>
-                  |
-                  <span class="experience__position">
-                    {{ experience.position }}
-                  </span>
+            {% for experience in experiences %}
+              <div class="entry__container">
+                <div class="split">
+                  <div>
+                    <span class="entry__name">
+                      {{ experience.organization }}
+                    </span>
+                    |
+                    <span class="experience__position">
+                      {{ experience.position }}
+                    </span>
+                  </div>
+                  <div class="time">
+                    {{ experience.duration }}
+                  </div>
                 </div>
-                <div class="time">
-                  {{ experience.duration }}
-                </div>
+
+                <ul>
+                  {% for description in experience.descriptions %}
+                    <li class="entry__item">{{ description }}</li>
+                  {% endfor %}
+                </ul>
               </div>
-
-              <ul>
-                {% for description in experience.descriptions %}
-                  <li class="entry__item">{{ description }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </section>
-
-        <section>
-          <h2 class="subtitle">Awards</h2>
-
-          {% for award in resume.awards %}
-            <div class="entry__container">
-              <div class="split">
-                <div>
-                  <span class="entry__name">{{ award.prize }}</span>
-                  {% if let Some(event) = award.event %}
-                     | <span class="award__event">{{ event }}</span>
-                  {% endif %}
-                </div>
-                <div class="time">{{ award.time }}</div>
-              </div>
-
-              <ul>
-                {% for description in award.descriptions %}
-                  <li class="entry__item">{{ description }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </section>
-
-        <section>
-          <h2 class="subtitle">Publications</h2>
-          
-          <ul>
-            {% for publication in resume.publications %}
-              <li class="entry__item">
-                <q>{{ publication.title.trim() }}</q>, {{ publication.published }}
-                (<a href="{{ publication.link }}">link</a>)
-              </li>
             {% endfor %}
-          </ul>
-        </section>
+          </section>
+        {% endif %}
 
-        <section>
-          <h2 class="subtitle">Projects</h2>
-          
-          {% for project in resume.projects %}
-            <div class="entry__container">
-              <div class="split">
-                <div>
-                  <span class="entry__name">
-                    {{ project.name }}
-                  </span>
+        {% if let Some(awards) = resume.awards %}
+          <section>
+            <h2 class="subtitle">Awards</h2>
 
-                  <span class="project__topics">
-                    {% if let [rest @ .., last] = *project.topics %}
-                      |
-                      {% for topic in rest %}
-                        {{ topic }},
-                      {% endfor %}
-                      {{ last }}
+            {% for award in awards %}
+              <div class="entry__container">
+                <div class="split">
+                  <div>
+                    <span class="entry__name">{{ award.prize }}</span>
+                    {% if let Some(event) = award.event %}
+                       | <span class="award__event">{{ event }}</span>
                     {% endif %}
-                  </span>
+                  </div>
+                  <div class="time">{{ award.time }}</div>
                 </div>
 
-                <div class="time">
-                  {{ project.time }}
-                </div>
+                <ul>
+                  {% for description in award.descriptions %}
+                    <li class="entry__item">{{ description }}</li>
+                  {% endfor %}
+                </ul>
               </div>
+            {% endfor %}
+          </section>
+        {% endif %}
 
-              <ul>
-                {% for description in project.descriptions %}
-                  <li class="entry__item">{{ description }}</li>
-                {% endfor %}
-              </ul>
-            </div> 
-          {% endfor %}
-        </section>
+        {% if let Some(publications) = resume.publications %}
+          <section>
+            <h2 class="subtitle">Publications</h2>
+            
+            <ul>
+              {% for publication in publications %}
+                <li class="entry__item">
+                  <q>{{ publication.title.trim() }}</q>, {{ publication.published }}
+                  (<a href="{{ publication.link }}">link</a>)
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+
+        {% if let Some(projects) = resume.projects %}
+          <section>
+            <h2 class="subtitle">Projects</h2>
+            
+            {% for project in projects %}
+              <div class="entry__container">
+                <div class="split">
+                  <div>
+                    <span class="entry__name">
+                      {{ project.name }}
+                    </span>
+
+                    <span class="project__topics">
+                      {% if let [rest @ .., last] = *project.topics %}
+                        |
+                        {% for topic in rest %}
+                          {{ topic }},
+                        {% endfor %}
+                        {{ last }}
+                      {% endif %}
+                    </span>
+                  </div>
+
+                  <div class="time">
+                    {{ project.time }}
+                  </div>
+                </div>
+
+                <ul>
+                  {% for description in project.descriptions %}
+                    <li class="entry__item">{{ description }}</li>
+                  {% endfor %}
+                </ul>
+              </div> 
+            {% endfor %}
+          </section>
+        {% endif %}
 
       </div>
 
