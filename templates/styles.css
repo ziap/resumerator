@@ -1,6 +1,5 @@
 :root {
   --font-size: 3mm;
-  --gap: 1.18mm;
   --padding: 5mm;
 }
 
@@ -8,6 +7,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "Lato";
+  background: #a3d2f4;
 }
 
 *, ::before, ::after {
@@ -33,7 +33,7 @@ ul {
       height: 0;
       width: 0;
       left: -0.725em;
-      top: 0.35em;
+      top: 0.5em;
     }
   }
 }
@@ -41,6 +41,7 @@ ul {
 .container {
   height: 100%;
   font-size: var(--font-size);
+  line-height: 1.5;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -58,15 +59,10 @@ ul {
   }
 }
 
-@media not print {
-  body {
-    background: #a3d2f4;
-  }
-
+@media screen and (min-width: 210mm) {
   .container {
     max-width: 210mm;
-    max-height: 297mm;
-    margin: 64px auto;
+    margin: min(calc((100vw - 210mm) / 8), 64px) auto;
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   }
 }
@@ -93,13 +89,13 @@ ul {
   font-family: "Merriweather";
   font-weight: 900;
   color: #f8fafc;
-  font-size: 7.5mm;
+  font-size: 6mm;
   margin: 2mm 0 6mm 0;
 }
 
 .subtitle {
   font-family: "Merriweather";
-  font-size: 4.5mm;
+  font-size: 4mm;
   font-weight: 800;
   margin: 0 0 var(--font-size) 0;
   border-bottom: solid #033451 0.53mm;
@@ -108,9 +104,9 @@ ul {
 
 .contact {
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
   padding: 0;
-  display: flex;
   gap: var(--padding);
   width: 100%;
   display: flex;
@@ -126,6 +122,7 @@ ul {
 
   & > a {
     color: inherit;
+    line-height: 1;
   }
 
   & > svg {
@@ -139,11 +136,13 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  gap: 1em;
 }
 
 .time {
   font-weight: 700;
   font-style: italic;
+  text-align: right;
 }
 
 .link {
@@ -155,7 +154,7 @@ ul {
 }
 
 .entry__item {
-  margin-top: var(--gap);
+  margin-top: 0.25em;
   text-align: justify;
 }
 

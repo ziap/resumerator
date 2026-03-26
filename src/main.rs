@@ -1,11 +1,19 @@
 use std::{error, fmt::Display, process};
 
 use serde::Deserialize;
-use rinja::Template;
+use askama::Template;
+
+#[derive(Deserialize)]
+enum SocialSite {
+  Github,
+  LinkedIn,
+  Twitter,
+  Facebook,
+}
 
 #[derive(Deserialize)]
 struct Social {
-  site: Box<str>,
+  site: SocialSite,
   profile: Box<str>,
 }
 
@@ -65,8 +73,8 @@ struct Project {
 struct Resume {
   title: Box<str>,
   contact: Contact,
-  education: Box<[Education]>,
-  skills: Box<[SkillSet]>,
+  education: Option<Box<[Education]>>,
+  skills: Option<Box<[SkillSet]>>,
   experiences: Option<Box<[Experience]>>,
   awards: Option<Box<[Award]>>,
   publications: Option<Box<[Publication]>>,

@@ -8,11 +8,11 @@ email    = "giapbuihuy05@gmail.com"
 website  = "ziap.github.io"
 
 [[contact.socials]]
-site    = "linkedin"
+site    = "LinkedIn"
 profile = "linkedin.com/in/ziap"
 
 [[contact.socials]]
-site    = "github"
+site    = "Github"
 profile = "github.com/ziap"
 
 # --------------------------------- Education ---------------------------------
@@ -29,25 +29,25 @@ duration    = "2020 - 2023"
 
 # ---------------------------------- Skills -----------------------------------
 
-[[skills]]
-subset = "Programming languages"
-skills = [ "C", "C++", "JavaScript", "TypeScript", "Python", "Rust" ]
-
-[[skills]]
-subset = "Markup languages"
-skills = [ "HTML/CSS", "Markdown", "LaTeX" ]
-
-[[skills]]
-subset = "Frameworks"
-skills = [ "PyTorch", "React", "Svelte", "FastAPI", "Django", "Ruby on Rails" ]
-
-[[skills]]
-subset = "Tools"
-skills = [ "Linux", "Git", "GitHub", "VSCode", "(Neo)vim", "NixOS" ]
-
-[[skills]]
-subset = "Languages"
-skills = [ "English (fluent, 8.0 IELTS)", "Vietnamese (native speaker)" ]
+# [[skills]]
+# subset = "Frontend"
+# skills = [ "Svelte", "Vue", "React", "WebAssembly", "WebGL" ]
+# 
+# [[skills]]
+# subset = "Backend"
+# skills = [ "Axum", "FastAPI", "Django", "Ruby on Rails", "Golang" ]
+# 
+# [[skills]]
+# subset = "System"
+# skills = [ "Rust", "Zig", "C/C++", "WinAPI", "Linux", "NixOS" ]
+# 
+# [[skills]]
+# subset = "AI/ML"
+# skills = [ "Pytorch", "Onnx", "Jax", "Scikit-learn" ]
+# 
+# [[skills]]
+# subset = "Languages"
+# skills = [ "English (fluent, 8.0 IELTS)", "Vietnamese (native speaker)" ]
 
 # -------------------------------- Experiences --------------------------------
 
@@ -144,39 +144,57 @@ link      = "https://2023.multimediaeval.com/paper28.pdf"
 # --------------------------------- Projects ----------------------------------
 
 [[projects]]
-name          = "2048 TDL"
-time          = "May 2022"
-topics        = [ "Machine Learning", "System Programming" ]
+name          = "Personal website"
+time          = "Jan 2024 - Present"
+topics        = [ "Web Development", "Blogging" ]
 descriptions = [
   """
-  Trained a powerful C++ 2048 AI with a variant of temporal difference learning
-  algorithms.
+  Designed, developed, and maintained a content-driven website using a modern
+  static-site generator (Zola), and GitHub Pages for hosting, automated
+  deployments, and version control to streamline content updates and project
+  rollouts.
   """,
 
   """
-  Applied many performance optimization techniques, such as multi-threading,
-  compiler intrinsics, bit manipulation, and template meta-programming, for
-  faster training and inference.
+  Curated and showcased multiple interactive web projects, including WebGL
+  demos, browser-based game-solving AIs (WebAssembly + Web Workers), and custom
+  online tools.
+  """,
+
+  """
+  Authored 10+ technical blog posts on topics such as advanced data structures
+  and algorithms, mathematical modeling and visualizations, Linux and NixOS
+  environment configuration, and performance optimization.
   """,
 ]
 
 [[projects]]
-name         = "Repalette"
-time         = "Jan 2023"
-topics       = [ "Web Development", "Image Processing" ]
+name         = "Video retrieval engine"
+time         = "Oct 2023"
+topics       = [ "Web Development", "Artificial Intelligence" ]
 descriptions = [
   """
-  Built a web application and command-line interface for changing images' color
-  palette to a specific theme.
+  Conceptualized and deployed an end-to-end video search engine in a
+  high-pressure, timed contest.
   """,
 
   """
-  Utilized the browser’s native image rendering capability and a WebAssembly
-  module written in C for high performance.
+  Architected and fine-tuned service pipelines to maintain sub-second response
+  times during peak competition usage.
   """,
 
   """
-  Open-sourced the project that garnered significant user engagement and received
-  numerous stars on GitHub.
+  Implemented a dynamic-programming-based algorithm over CLIP embeddings to
+  capture temporal context and cross-modal relevance.
+  """,
+
+  """
+  Optimized the algorithm with a parallelized execution strategy built on
+  PyTorch bulk tensor operations, achieving a 4.5× speedup.
+  """,
+
+  """
+  Built a responsive UI with vanilla HTML, CSS, and JavaScript for video
+  preview, query input, result visualization, and automated submission.
   """,
 ]

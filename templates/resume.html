@@ -31,16 +31,15 @@
           </div>
           {% for social in contact.socials %}
             <div class="contact__item">
-              {% match &*social.site %}
-                {% when "github" %}
+              {% match social.site %}
+                {% when SocialSite::Github %}
                   {% include "icons/social/github.svg" %}
-                {% when "linkedin" %}
+                {% when SocialSite::LinkedIn %}
                   {% include "icons/social/linkedin.svg" %}
-                {% when "twitter" %}
+                {% when SocialSite::Twitter %}
                   {% include "icons/social/twitter.svg" %}
-                {% when "facebook" %}
+                {% when SocialSite::Facebook %}
                   {% include "icons/social/facebook.svg" %}
-                {% when _ %}
               {% endmatch %}
               <a href="https://{{ social.profile }}">{{ social.profile }}</a> 
             </div>
@@ -49,43 +48,47 @@
       </section>
 
       <div class="resume__body">
-        <section>
-          <h2 class="subtitle">Education</h2>
-          {% for education in resume.education %}
-            <div class="entry__container split">
-              <div>
-                <span class="entry__name">
-                  {{ education.institution }}
-                </span>
-                <br>
-                <span>
-                  {{ education.program }}
-                </span>
+        {% if let Some(education) = resume.education %}
+          <section>
+            <h2 class="subtitle">Education</h2>
+            {% for education in education %}
+              <div class="entry__container split">
+                <div>
+                  <span class="entry__name">
+                    {{ education.institution }}
+                  </span>
+                  <br>
+                  <span>
+                    {{ education.program }}
+                  </span>
+                </div>
+                <div class="time">
+                  {{ education.duration }}
+                </div>
               </div>
-              <div class="time">
-                {{ education.duration }}
-              </div>
-            </div>
-          {% endfor %}
-        </section>
-
-        <section>
-          <h2 class="subtitle">Skills</h2>
-          <ul>
-            {% for skillset in resume.skills %}
-              {% let skills = *skillset.skills %}
-              {% if let [rest @ .., last] = skills %}
-                <li class="entry__item">
-                  {{ skillset.subset }}:
-                  {% for skill in rest %}
-                    {{ skill }},
-                  {% endfor %}
-                  {{ last }}
-                </li>
-              {% endif %}
             {% endfor %}
-          </ul>
-        </section>
+          </section>
+        {% endif %}
+
+        {% if let Some(skills) = resume.skills %}
+          <section>
+            <h2 class="subtitle">Skills</h2>
+            <ul>
+              {% for skillset in skills %}
+                {% let skills = *skillset.skills %}
+                {% if let [rest @ .., last] = skills %}
+                  <li class="entry__item">
+                    {{ skillset.subset }}:
+                    {% for skill in rest %}
+                      {{ skill }},
+                    {% endfor %}
+                    {{ last }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
 
         {% if let Some(experiences) = resume.experiences %}
           <section>
