@@ -90,12 +90,14 @@ ul {
   font-weight: 900;
   color: #f8fafc;
   font-size: 6mm;
+  line-height: 1;
   margin: 2mm 0 6mm 0;
 }
 
 .subtitle {
   font-family: "Merriweather";
   font-size: 4mm;
+  line-height: 1;
   font-weight: 800;
   margin: 0 0 var(--font-size) 0;
   border-bottom: solid #033451 0.53mm;
