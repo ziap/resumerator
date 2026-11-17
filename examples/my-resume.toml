@@ -52,6 +52,30 @@ duration    = "2020 - 2023"
 # -------------------------------- Experiences --------------------------------
 
 [[experiences]]
+organization = "Holistics"
+duration     = "Oct 2025 - Current"
+position     = "Full-stack engineer"
+descriptions = [
+  """
+  Enabled the AI agent to call tools from users' third-party MCP servers
+  (GitHub, Notion, Linear). Designed on-demand tool loading that keeps 250+
+  tool catalogs out of the prompt while preserving a 93% prompt-cache hit rate,
+  with tools found by a custom trigram-indexed regex search.
+  """,
+  """
+  Architected a secure backend pipeline unlocking multimodal vision for
+  conversational AI. Enabled screenshot-based dashboard debugging, multi-format
+  file ingestion (CSVs for data modeling, PDFs for themes), and laid the
+  foundation for vision-driven function call.
+  """,
+  """
+  Engineered a centralized AI Settings hub and trial onboarding flow. Migrated
+  legacy configurations with zero disruption, enforced strict feature-tier and
+  permission gating across routes, and pioneered a reactive auto-save pattern.
+  """,
+]
+
+[[experiences]]
 organization = "Robotics & IoT Club HCMUS"
 duration     = "Jun 2022 - Sep 2022"
 position     = "Research intern"
@@ -65,22 +89,6 @@ descriptions = [
   Planned for the development of a full-stack web application for reading stories
   with AI text-to-speech technology, distributed the workload, and supervised the
   team’s progress. 
-  """,
-]
-
-[[experiences]]
-organization = "The Gifted Battlefield"
-duration     = "Jan 2021 - May 2023"
-position     = "Software engineer, DevOps"
-descriptions = [
-  """
-  Deployed and maintained multiple web applications and made improvements when
-  requirements changed.
-  """,
-
-  """
-  Collaborated in a student organization department and helped new members get up
-  to speed.
   """,
 ]
 
@@ -144,27 +152,26 @@ link      = "https://2023.multimediaeval.com/paper28.pdf"
 # --------------------------------- Projects ----------------------------------
 
 [[projects]]
-name          = "Personal website"
-time          = "Jan 2024 - Present"
-topics        = [ "Web Development", "Blogging" ]
+name          = "2048 AI"
+time          = "Apr 2023 - Present"
+topics        = [ "Systems Programming", "Reinforcement Learning" ]
 descriptions = [
   """
-  Designed, developed, and maintained a content-driven website using a modern
-  static-site generator (Zola), and GitHub Pages for hosting, automated
-  deployments, and version control to streamline content updates and project
-  rollouts.
+  Trained an n-tuple network with TD(λ) self-play from scratch, covering
+  training/evaluation loops, weight checkpointing, inference and GUI
+  integration.
   """,
 
   """
-  Curated and showcased multiple interactive web projects, including WebGL
-  demos, browser-based game-solving AIs (WebAssembly + Web Workers), and custom
-  online tools.
+  Performed aggresive optimizations such as SWAR bitboards, BMI2/SIMD
+  intrinsics, compile-time pattern indexer and network layout generation.
   """,
 
   """
-  Authored 10+ technical blog posts on topics such as advanced data structures
-  and algorithms, mathematical modeling and visualizations, Linux and NixOS
-  environment configuration, and performance optimization.
+  Parallelized the inference with lock-free transposition tables and worker
+  pools on WebAssembly threads. Scaled the training and evaluation over
+  multiple threads while still retaining deterministic and reproducible
+  results.
   """,
 ]
 
@@ -191,10 +198,5 @@ descriptions = [
   """
   Optimized the algorithm with a parallelized execution strategy built on
   PyTorch bulk tensor operations, achieving a 4.5× speedup.
-  """,
-
-  """
-  Built a responsive UI with vanilla HTML, CSS, and JavaScript for video
-  preview, query input, result visualization, and automated submission.
   """,
 ]
